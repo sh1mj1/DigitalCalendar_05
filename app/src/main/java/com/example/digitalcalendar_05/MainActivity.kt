@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -70,6 +71,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun initStartPhotoFrameModeBtn() {
+        Log.d("MainActivity", "initStartPhotoFrameModeBtn()")
+        startPhotoFrameModeBtn.setOnClickListener {
+            val intent = Intent(this, PhotoFrameActivity::class.java)
+            // uri 을 넘겨주어야 하는데 자체를 넘길 수 없으므로 string 으로
+            imageUriList.forEachIndexed { index, uri ->
+                intent.putExtra("photo$index", uri.toString())
+            }
+            intent.putExtra("photoListSize", imageUriList.size)
+            startActivity(intent)
+        }
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -79,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
         when (requestCode) {
             1000 -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     navigatePhotos()
 
                 } else {
@@ -91,9 +105,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initStartPhotoFrameModeBtn() {
-
-    }
 
     private fun showPermissionContextPopup() {
         AlertDialog.Builder(this)
@@ -129,18 +140,18 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        when(requestCode) {
+        when (requestCode) {
             2000 -> {
                 // onActivityResult 함수의 인수 data 는 NULLABLE 임.
                 // 혹시라도 이전 액티비티에서 데이터를 null로 내려주었을 때 문제가 생기니까 nullable
                 val selectedImageUri: Uri? = data?.data
                 if (selectedImageUri != null) {
-                    if(imageUriList.size >= 9) {
+                    if (imageUriList.size >= 9) {
                         Toast.makeText(this, "이미 사진이 꽉 찼습니다.", Toast.LENGTH_SHORT).show()
                     }
                     imageUriList.add(selectedImageUri)
-                    imageViewList[imageUriList.size -1].setImageURI(selectedImageUri)
-                }else{
+                    imageViewList[imageUriList.size - 1].setImageURI(selectedImageUri)
+                } else {
                     Toast.makeText(this, "사진을 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
                 }
             }

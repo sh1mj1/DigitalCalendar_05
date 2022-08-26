@@ -6,6 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<!--    사진이 들어갈 LinearLayout.
+        constraintDimensionRatio-->
+    <LinearLayout
+        android:id="@+id/firstRowLinearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H,3:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/secondRowLinearLayout">
+        <ImageView
+            android:id="@+id/pic_iv_11"
+            android:scaleType="centerCrop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/pic_iv_12"
+            android:scaleType="centerCrop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/pic_iv_13"
+            android:scaleType="centerCrop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/secondRowLinearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H,3:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstRowLinearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/thirdRowLinearLayout">
+        <ImageView
+            android:id="@+id/pic_iv_21"
+            android:scaleType="centerCrop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/pic_iv_22"
+            android:scaleType="centerCrop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/pic_iv_23"
+            android:scaleType="centerCrop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/thirdRowLinearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H,3:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondRowLinearLayout">
+        <ImageView
+            android:id="@+id/pic_iv_31"
+            android:scaleType="centerCrop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/pic_iv_32"
+            android:scaleType="centerCrop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/pic_iv_33"
+            android:scaleType="centerCrop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/startPhotoFrameMode_Btn"
         android:layout_width="0dp"
@@ -16,16 +114,15 @@
         app:layout_constraintStart_toStartOf="parent"
 
         />
+
     <Button
         android:id="@+id/addPhoto_Btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/startPhotoFrameMode_Btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:text="사진 추가하기"
-        />
-
+        app:layout_constraintBottom_toTopOf="@+id/startPhotoFrameMode_Btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

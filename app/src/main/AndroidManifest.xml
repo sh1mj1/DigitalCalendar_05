@@ -28,6 +28,7 @@
         </activity>
         <activity android:name=".PhotoFrameActivity"
             android:exported="true"
+            android:screenOrientation="landscape"
             />
     </application>
 
